@@ -1,0 +1,13 @@
+﻿<SolutionConfiguration>
+  <Settings>
+    <AllowParallelTestExecution>True</AllowParallelTestExecution>
+    <MetricsExclusionList>
+      <Value>Program.cs:CalculadoraJuros\Taxa.csproj</Value>
+      <Value>Program.cs:Juros\Juros.csproj</Value>
+      <Value>Program.cs:ApiGateway\ApiGateway.csproj</Value>
+      <Value>Startup.cs:ApiGateway\ApiGateway.csproj</Value>
+      <Value>Startup.cs:Juros\Juros.csproj</Value>
+    </MetricsExclusionList>
+    <SolutionConfigured>True</SolutionConfigured>
+  </Settings>
+</SolutionConfiguration>

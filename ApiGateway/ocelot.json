@@ -1,0 +1,60 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api1/{everything}",
+      "ServiceName": "api1",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "SwaggerKey": "api1"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api2/{everything}",
+      "ServiceName": "api2",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "SwaggerKey": "api2"
+    }
+  ],
+  
+  "SwaggerEndPoints": [
+    {
+      "Key": "api1",
+      "Config": [
+        {
+          "Name": "API 1",
+          "Version": "v1",
+          "Service": {
+            "Name": "api1",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "api2",
+      "Config": [
+        {
+          "Name": "API 2",
+          "Version": "v1",
+          "Service": {
+            "Name": "api2",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5003",
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      "Host": "localhost",
+      "Port": "8761"
+    }
+  }
+}
