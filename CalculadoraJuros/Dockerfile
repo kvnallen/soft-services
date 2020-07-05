@@ -2,21 +2,21 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 5031
-ENV ASPNETCORE_URLS=http://+5031
+EXPOSE 5030
+ENV ASPNETCORE_URLS=http://+5030
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Juros/Juros.csproj", "Juros/"]
-RUN dotnet restore "Juros/Juros.csproj"
+COPY ["CalculadoraJuros/Taxa.csproj", "CalculadoraJuros/"]
+RUN dotnet restore "CalculadoraJuros/Taxa.csproj"
 COPY . .
-WORKDIR "/src/Juros"
-RUN dotnet build "Juros.csproj" -c Release -o /app/build
+WORKDIR "/src/CalculadoraJuros"
+RUN dotnet build "Taxa.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Juros.csproj" -c Release -o /app/publish
+RUN dotnet publish "Taxa.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Juros.dll"]
+ENTRYPOINT ["dotnet", "Taxa.dll"]

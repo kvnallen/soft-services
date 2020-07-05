@@ -2,21 +2,21 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 5031
-ENV ASPNETCORE_URLS=http://+5031
+EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Juros/Juros.csproj", "Juros/"]
-RUN dotnet restore "Juros/Juros.csproj"
+COPY ["ApiGateway/ApiGateway.csproj", "ApiGateway/"]
+RUN dotnet restore "ApiGateway/ApiGateway.csproj"
 COPY . .
-WORKDIR "/src/Juros"
-RUN dotnet build "Juros.csproj" -c Release -o /app/build
+WORKDIR "/src/ApiGateway"
+RUN dotnet build "ApiGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Juros.csproj" -c Release -o /app/publish
+RUN dotnet publish "ApiGateway.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Juros.dll"]
+ENTRYPOINT ["dotnet", "ApiGateway.dll"]

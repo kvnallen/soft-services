@@ -2,6 +2,7 @@ using System.Reflection;
 using FluentValidation.AspNetCore;
 using Juros.Clients;
 using Juros.Domain;
+using Juros.Formatters;
 using Juros.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,7 @@ namespace Juros
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "API2 (Júros)", Version = "v1"});
             });
             services.AddDiscoveryClient(Configuration);
-            services.AddControllers()
+            services.AddControllers(cfg => cfg.OutputFormatters.Insert(0, new DoubleTwoDecimalPlacesFormatter()))
                 .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
 
             services.Configure<ProjectInfo>(Configuration.GetSection("ProjectInfo"));

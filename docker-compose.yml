@@ -1,0 +1,56 @@
+version: '3.4'
+
+services:
+
+  service_discovery:
+    image: ${DOCKER_REGISTRY-}eureka_server 
+    networks: 
+      - production-network
+    container_name: service-discovery-softplan
+    restart: always
+    ports: 
+      - "8761:8761"
+    build: 
+      context: .
+      dockerfile: src/eureka-server/Dockerfile
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    networks: 
+      - production-network
+    container_name: api-gateway-softplan
+    depends_on: 
+      - service_discovery
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  taxa:
+    image: ${DOCKER_REGISTRY-}taxa
+    networks: 
+      - production-network
+    depends_on: 
+      - service_discovery
+      - apigateway
+    ports: 
+      - "5030:5030"
+    build:
+      context: .
+      dockerfile: CalculadoraJuros/Dockerfile
+
+  juros:
+    image: ${DOCKER_REGISTRY-}juros
+    networks: 
+      - production-network
+    ports: 
+      - "5031:5031"
+    depends_on: 
+      - service_discovery
+      - apigateway
+    build:
+      context: .
+      dockerfile: Juros/Dockerfile
+
+networks: 
+  production-network:
+      driver: bridge
