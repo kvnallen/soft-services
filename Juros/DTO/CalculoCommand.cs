@@ -1,12 +1,15 @@
 ﻿using FluentValidation;
 using Juros.Constants;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Juros.DTO
 {
     public class CalculoCommand
     {
+        [SwaggerParameter(Required = true)]
         public double ValorInicial { get; set; }
 
+        [SwaggerParameter(Required = true)]
         public int Meses { get; set; }
     }
 

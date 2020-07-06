@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Juros.Controllers
 {
@@ -16,7 +17,9 @@ namespace Juros.Controllers
         }
 
         [HttpGet("showmethecode")]
-        public IActionResult ShowTheCode([FromServices] IOptions<ProjectInfo> projectInfo) 
+        [SwaggerOperation("Retorna informações do projeto")]
+        [SwaggerResponse(200, type: typeof(ProjectInfo))]
+        public IActionResult ShowTheCode([FromServices] IOptions<ProjectInfo> projectInfo)
             => Ok(projectInfo.Value);
     }
 }
