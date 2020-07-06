@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juros - Services", "Juros -
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Taxa - Services", "Taxa - Services", "{C60ECBB3-C062-406F-A0FD-B71B7395727A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxa.Tests", "Taxa.Tests\Taxa.Tests.csproj", "{738950F2-35DC-4BD5-B3A5-E6C9E7247F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taxa.Tests", "Taxa.Tests\Taxa.Tests.csproj", "{738950F2-35DC-4BD5-B3A5-E6C9E7247F0D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0EF80E56-6C43-4DD5-8E2E-D58906A6F3A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{738950F2-35DC-4BD5-B3A5-E6C9E7247F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{738950F2-35DC-4BD5-B3A5-E6C9E7247F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{738950F2-35DC-4BD5-B3A5-E6C9E7247F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF80E56-6C43-4DD5-8E2E-D58906A6F3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF80E56-6C43-4DD5-8E2E-D58906A6F3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF80E56-6C43-4DD5-8E2E-D58906A6F3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF80E56-6C43-4DD5-8E2E-D58906A6F3A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

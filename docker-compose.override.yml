@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  taxa:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5030:5030"
+
+  juros:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5031:5031"
+
+
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

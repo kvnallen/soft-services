@@ -49,11 +49,11 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5003",
+    "BaseUrl": "http://api-gateway-softplan:5003",
     "UseServiceDiscovery": true,
     "ServiceDiscoveryProvider": {
       "Type": "Eureka",
-      "Host": "localhost",
+      "Host": "api-gateway-softplan",
       "Port": "8761"
     }
   }

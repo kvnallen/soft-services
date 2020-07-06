@@ -3,13 +3,9 @@ RUN mkdir ~/app
 WORKDIR /app
 EXPOSE 8761
 
-# COPY "eurekaserver-1.jar" .
-COPY ["src", "src"]
-COPY "pom.xml" .
+COPY ["src/eureka-server/src", "src"]
+COPY "src/eureka-server/pom.xml" .
 
 RUN mvn package -DskipTests=true
-
-
-VOLUME [ "maven-repo", "/root/.m2" ]
 
 CMD ["java","-jar","target/eurekaserver-1.jar", "--server.port=8761"]
