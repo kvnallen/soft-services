@@ -3,7 +3,6 @@ RUN mkdir ~/app
 WORKDIR /app
 EXPOSE 8761
 
-# COPY "eurekaserver-1.jar" .
 COPY ["src/eureka-server/src", "src"]
 COPY "src/eureka-server/pom.xml" .
 

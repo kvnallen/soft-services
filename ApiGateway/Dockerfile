@@ -2,10 +2,11 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5003
+ENV ASPNETCORE_URLS=http://+:5003
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+ENV ASPNETCORE_URLS=http://+:5003
 WORKDIR /src
 COPY ["ApiGateway/ApiGateway.csproj", "ApiGateway/"]
 RUN dotnet restore "ApiGateway/ApiGateway.csproj"
@@ -14,9 +15,11 @@ WORKDIR "/src/ApiGateway"
 RUN dotnet build "ApiGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
+ENV ASPNETCORE_URLS=http://+:5003
 RUN dotnet publish "ApiGateway.csproj" -c Release -o /app/publish
 
 FROM base AS final
+ENV ASPNETCORE_URLS=http://+:5003
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ApiGateway.dll"]
