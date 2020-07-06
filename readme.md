@@ -24,3 +24,4 @@ docker-compose up -d apigateway taxa juros
 | Gateway | http://localhost:5003 | http://localhost:5003/swagger |
 | API1    | http://localhost:5030 | http://localhost:5030/swagger |
 | API2    | http://localhost:5031 | http://localhost:5031/swagger |
+| Eureka  | http://localhost:8761 | -                             |
