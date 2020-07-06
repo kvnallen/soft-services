@@ -53,7 +53,7 @@
     "UseServiceDiscovery": true,
     "ServiceDiscoveryProvider": {
       "Type": "Eureka",
-      "Host": "localhost",
+      "Host": "api-gateway-softplan",
       "Port": "8761"
     }
   }
