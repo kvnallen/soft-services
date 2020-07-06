@@ -33,6 +33,8 @@ namespace Juros.Tests.Unit
 
         [Theory]
         [InlineData(100, 5, 0.01, 105.10)]
+        [InlineData(1, 5, 0.01, 1.05)]
+        [InlineData(10, 3, 1.01, 81.20)]
         public async void Calcular_QuandoValoresEstiveremValidos_DeveRetornarValorCalculado(int valorInicial, int meses, double taxaJuros, double valorEsperado)
         {
             //Arrange

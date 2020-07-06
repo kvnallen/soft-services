@@ -28,7 +28,8 @@ namespace Juros
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "API2 (Júros)", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "API2", Version = "v1"});
+                c.EnableAnnotations();
             });
             services.AddDiscoveryClient(Configuration);
             services.AddControllers(cfg => cfg.OutputFormatters.Insert(0, new DoubleTwoDecimalPlacesFormatter()))
